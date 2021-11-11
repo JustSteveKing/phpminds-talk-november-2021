@@ -34,6 +34,8 @@ jobs:
           touch database/database.sqlite
       - name: Run Tests
         env:
+          FATHOM_URI: 'https://api.usefathom.com/v1'
+          FATHOM_TOKEN: 12345abcde
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: php artisan test
