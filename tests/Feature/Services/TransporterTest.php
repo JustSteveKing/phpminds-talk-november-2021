@@ -27,9 +27,11 @@ it('can get a list of sites using a transporter service', function () {
 });
 
 it('can mock a request', function () {
-   dd(FetchSite::fake()->withFakeData([
-       'test' => 'test'
-   ])->authenticate()->setPath(
-       path: "/sites/SGJKEWOR",
-   )->send()->json());
+   expect(
+       FetchSite::fake()->withFakeData([
+           'test' => 'test'
+       ])->authenticate()->setPath(
+           path: "/sites/SGJKEWOR",
+       )->send()->json()
+   )->toBeArray()->toEqual(['test' => 'test']);
 });
